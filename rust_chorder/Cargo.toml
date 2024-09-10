@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Martin GRUDLER <devel@grudler.eu>"]
 license = "GPL-3.0-or-later"
-homepage = "https://youtu.be/dQw4w9WgXcQ"
+homepage = "https://git.tsgeek.fr/TSGeek/rust-chorder"
 description = "A simple chorder in rust"
 
 [workspace]
