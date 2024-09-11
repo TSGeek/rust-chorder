@@ -37,6 +37,7 @@ impl Plugin for RustChorder {
         },
         AudioIOLayout {
             main_input_channels: NonZeroU32::new(1),
+            main_output_channels: NonZeroU32::new(1),
             ..AudioIOLayout::const_default()
         },
     ];
