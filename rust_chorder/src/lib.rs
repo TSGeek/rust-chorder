@@ -59,8 +59,71 @@ impl Plugin for RustChorder {
         &mut self,
         _buffer: &mut Buffer,
         _aux: &mut AuxiliaryBuffers,
-        _context: &mut impl ProcessContext<Self>,
+        context: &mut impl ProcessContext<Self>,
     ) -> ProcessStatus {
+        while let Some(event) = context.next_event() {
+            match event {
+                NoteEvent::NoteOn {
+                    timing,
+                    voice_id,
+                    channel,
+                    note,
+                    velocity,
+                } => {
+                    context.send_event(NoteEvent::NoteOn {
+                        timing,
+                        voice_id,
+                        channel,
+                        note,
+                        velocity,
+                    });
+                    context.send_event(NoteEvent::NoteOn {
+                        timing,
+                        voice_id,
+                        channel,
+                        note : note + 4,
+                        velocity,
+                    });
+                    context.send_event(NoteEvent::NoteOn {
+                        timing,
+                        voice_id,
+                        channel,
+                        note : note + 7,
+                        velocity,
+                    });
+                },
+                NoteEvent::NoteOff {
+                    timing,
+                    voice_id,
+                    channel,
+                    note,
+                    velocity,
+                } => {
+                    context.send_event(NoteEvent::NoteOff {
+                        timing,
+                        voice_id,
+                        channel,
+                        note,
+                        velocity,
+                    });
+                    context.send_event(NoteEvent::NoteOff {
+                        timing,
+                        voice_id,
+                        channel,
+                        note : note + 4,
+                        velocity,
+                    });
+                    context.send_event(NoteEvent::NoteOff {
+                        timing,
+                        voice_id,
+                        channel,
+                        note : note + 7,
+                        velocity,
+                    });
+                },
+                _ => ()
+            }
+        }
         ProcessStatus::Normal
     }
 }
