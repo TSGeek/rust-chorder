@@ -81,17 +81,17 @@ impl Plugin for RustChorder {
                         timing,
                         voice_id,
                         channel,
-                        note : note + 4,
+                        note: note + 4,
                         velocity,
                     });
                     context.send_event(NoteEvent::NoteOn {
                         timing,
                         voice_id,
                         channel,
-                        note : note + 7,
+                        note: note + 7,
                         velocity,
                     });
-                },
+                }
                 NoteEvent::NoteOff {
                     timing,
                     voice_id,
@@ -110,17 +110,17 @@ impl Plugin for RustChorder {
                         timing,
                         voice_id,
                         channel,
-                        note : note + 4,
+                        note: note + 4,
                         velocity,
                     });
                     context.send_event(NoteEvent::NoteOff {
                         timing,
                         voice_id,
                         channel,
-                        note : note + 7,
+                        note: note + 7,
                         velocity,
                     });
-                },
+                }
                 _ => ()
             }
         }
@@ -142,8 +142,7 @@ impl Vst3Plugin for RustChorder {
     const VST3_CLASS_ID: [u8; 16] = *b"Qta7Veip3NSaKvIs";
 
     // And also don't forget to change these categories
-    const VST3_SUBCATEGORIES: &'static [Vst3SubCategory] =
-        &[Vst3SubCategory::Instrument, Vst3SubCategory::Tools];
+    const VST3_SUBCATEGORIES: &'static [Vst3SubCategory] = &[Vst3SubCategory::Instrument, Vst3SubCategory::Tools];
 }
 
 nih_export_clap!(RustChorder);
