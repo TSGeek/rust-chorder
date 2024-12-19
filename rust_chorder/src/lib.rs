@@ -24,7 +24,6 @@ impl Plugin for RustChorder {
 
     const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
-
     const AUDIO_IO_LAYOUTS: &'static [AudioIOLayout] = &[
         AudioIOLayout {
             main_input_channels: NonZeroU32::new(2),
@@ -121,7 +120,7 @@ impl Plugin for RustChorder {
                         velocity,
                     });
                 }
-                _ => ()
+                _ => (),
             }
         }
         ProcessStatus::Normal
@@ -142,7 +141,8 @@ impl Vst3Plugin for RustChorder {
     const VST3_CLASS_ID: [u8; 16] = *b"Qta7Veip3NSaKvIs";
 
     // And also don't forget to change these categories
-    const VST3_SUBCATEGORIES: &'static [Vst3SubCategory] = &[Vst3SubCategory::Instrument, Vst3SubCategory::Tools];
+    const VST3_SUBCATEGORIES: &'static [Vst3SubCategory] =
+        &[Vst3SubCategory::Instrument, Vst3SubCategory::Tools];
 }
 
 nih_export_clap!(RustChorder);
